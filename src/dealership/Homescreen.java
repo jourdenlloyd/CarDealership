@@ -16,7 +16,7 @@ public class Homescreen implements Serializable {
 		System.out.println("___ Welcome to Lloyd Cars! ___\n");
 		System.out.println("Please login to continue. " + "Press 1");
 		System.out.println("Need to sign up? " + "Press 2");
-		System.out.println("Ready to logout? " + "Press 3");
+		System.out.println("Ready to exit? " + "Press 3");
 			
 		boolean checker = true;
 			Scanner scan = new Scanner(System.in);
@@ -67,7 +67,7 @@ public class Homescreen implements Serializable {
 			case 3:
 				System.out.println("Exiting...");
 				OS.dao.saveInventory(inventory);
-				
+				System.out.println("You have exited the program...\n\n\n");
 				System.exit(0);
 					break;
 					default: System.out.println("Please enter 1-3.");
@@ -116,7 +116,7 @@ public class Homescreen implements Serializable {
 						ClientScreen cScreen = new ClientScreen(inventory2, inventory2.getcList().get(i));
 					} else {
 						System.out.println("Sorry, this account was not found. Please try again or create a new account.");
-						Login(inventory2, username, password, loginType);
+						Homescreen homescreen = new Homescreen(inventory2);
 					}
 				}
 			}

@@ -52,8 +52,9 @@ public class EmployeeScreen {
 			EmployeeMenu();
 			break;
 		case 4:
-			inventory.mainLot.viewCarList();
 			System.out.println("For which car would you like to accept offers?");
+			inventory.mainLot.viewCarList();
+			System.out.println("Please choose a car.\n");
 			int acceptedCar = scan.nextInt();
 			int clientID = 1;
 			Car car = inventory.mainLot.getCar().get(acceptedCar - 1);
@@ -65,10 +66,13 @@ public class EmployeeScreen {
 				Client client = (Client) car.getOffer().keySet().toArray()[clientI - 1];
 				double currentCar = car.getOffer().get(client);
 				employee.acceptOffers(car, currentCar, client);
+				System.out.println("The offer has been accepted.\n");
 			EmployeeMenu();
 			break;
 		case 5:
 			System.out.println("For which car would you like to reject offers?");
+			inventory.mainLot.viewCarList();
+			System.out.println("Please choose a car.\n");
 			int rejectedCar = scan.nextInt();
 			int clientId = 1;
 			Car car1 = inventory.mainLot.getCar().get(rejectedCar - 1);
@@ -80,6 +84,7 @@ public class EmployeeScreen {
 				Client currentClient = (Client) car1.getOffer().keySet().toArray()[client1 - 1];
 				double currentCar1 = car1.getOffer().get(currentClient);
 				employee.rejectOffers(car1, currentCar1, currentClient);
+				System.out.println("The offer has been rejected.\n");
 			EmployeeMenu();
 			break;
 		case 6:
@@ -91,7 +96,8 @@ public class EmployeeScreen {
 			EmployeeMenu();
 			break;
 		case 7:
-			System.out.println("Logging out...");
+			System.out.println("Thank you for using Lloyd Cars Portal!\n");
+			System.out.println("Logging out...\n\n\n");
 			Homescreen homescreen = new Homescreen(inventory);
 			break;
 		}

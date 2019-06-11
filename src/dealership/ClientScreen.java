@@ -58,7 +58,8 @@ public class ClientScreen  {
 			ClientMenu();
 			break;
 		case 5:
-			System.out.println("Logging out...");
+			System.out.println("Thank you for using Lloyd Cars Portal!\n");
+			System.out.println("Logging out...\n\n\n");
 			Homescreen homescreen = new Homescreen(inventory);
 			break;
 		}

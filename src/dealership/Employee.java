@@ -33,7 +33,9 @@ public class Employee implements EmployeePermissions, Serializable {
 
 	@Override
 	public double acceptOffers(Car car, double offer, Client client) {
+		inv.mainLot.viewCarLedger();
 		inv.mainLot.addPurchasedCar(car, offer, client);
+		System.out.println("The offer has been accepted");
 		return offer;
 	}
 

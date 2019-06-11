@@ -20,16 +20,16 @@ public class Client implements ClientPermissions, Serializable {
 		username = name;
 		password = pass;
 	}
-	
+	public void viewOffers()
+	{
+		for (Double a : myOffers) {
+			System.out.println(myOffers);
+		}
+	}
 
 	@Override
 	public void makeOffer(double i) {
-	ClientScreen sc =new ClientScreen();
-		if(myOffers.isEmpty()) {
-			myOffers.add(i);}
-		else {
-			sc.ClientMenu();
-		}
+		myOffers.add(i);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class Client implements ClientPermissions, Serializable {
 	public void carPayment(Car car, double offer) {
 		ArrayList<Double> cp = new ArrayList<Double>();
 		for (int i = 0; i < 13; i++) {
-			cp.add(offer/12);
+			cp.add((offer/12));
 		}
 		myPayments.put(car, cp);
 	}
@@ -72,5 +72,6 @@ public class Client implements ClientPermissions, Serializable {
 	public String getPassword() {
 		return password;
 	}
+	
 
 }
