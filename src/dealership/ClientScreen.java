@@ -9,17 +9,15 @@ public class ClientScreen  {
 	public ClientScreen(Inventory inv, Client user) {
 		inventory = inv;
 		client = user;
-		System.out.println("Hello, " + user.getUsername() + " you have logged into Lloyd Cars Portal!");
+		System.out.println("Hello, " + user.getUsername() + " you have logged into Lloyd Cars Portal!\n");
 		ClientMenu();
 	}
 	
 	public ClientScreen() {
-		// TODO Auto-generated constructor stub
 	}
 
-	
-
 	public void ClientMenu() {
+		System.out.println("___ Welcome to Lloyd Cars Client Portal! ___\n");
 		System.out.println("What would you like to do next?");
 		System.out.println("1. View cars currently in the lot.\n"
 							+ "2. Make an offer on a viewed car.\n"

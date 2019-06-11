@@ -16,6 +16,7 @@ public class EmployeeScreen {
 	}
 	
 	public void EmployeeMenu() {
+		System.out.println("___ Welcome to Lloyd Cars Employee Portal! ___\n");
 		System.out.println("What would you like to do next?");
 		System.out.println("1. View cars currently in the lot.\n"
 							+ "2. Add a car to the lot.\n"
@@ -53,7 +54,7 @@ public class EmployeeScreen {
 			break;
 		case 4:
 			System.out.println("For which car would you like to accept offers?");
-			inventory.mainLot.viewCarList();
+			inventory.mainLot.viewCarLedger();
 			System.out.println("Please choose a car.\n");
 			int acceptedCar = scan.nextInt();
 			int clientID = 1;
@@ -62,11 +63,12 @@ public class EmployeeScreen {
 					System.out.println(clientID + " " + c.getUsername());
 					clientID++;
 				}
+				System.out.println("Please choose a client.\n");
 				int clientI = scan.nextInt();
 				Client client = (Client) car.getOffer().keySet().toArray()[clientI - 1];
 				double currentCar = car.getOffer().get(client);
 				employee.acceptOffers(car, currentCar, client);
-				System.out.println("The offer has been accepted.\n");
+				//System.out.println("The offer has been accepted.\n");
 			EmployeeMenu();
 			break;
 		case 5:

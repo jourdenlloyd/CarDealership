@@ -38,7 +38,7 @@ public class Client implements ClientPermissions, Serializable {
 			System.out.println("You currently do not own any cars.");
 		} else {
 		for (Car a : myOwnedCars) {
-			System.out.println(a.getMake() + a.getModel());
+			System.out.println(a.getMake() + " " + a.getModel());
 		} 
 			}
 	}
