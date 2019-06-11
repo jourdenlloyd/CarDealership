@@ -19,7 +19,8 @@ public class Client implements ClientPermissions, Serializable {
 	public Client(String name, String pass) {
 		username = name;
 		password = pass;
-	}
+	} 
+	
 	public void viewOffers()
 	{
 		for (Double a : myOffers) {
