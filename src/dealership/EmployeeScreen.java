@@ -2,6 +2,8 @@ package dealership;
 
 import java.util.Scanner;
 
+import dealership.inter.ClientPermissions;
+
 public class EmployeeScreen {
 	Inventory inventory;
 	Employee employee;
@@ -21,7 +23,7 @@ public class EmployeeScreen {
 							+ "4. Accept offers for cars in the lot.\n"
 							+ "5. Reject offers for cars in the lot.\n"
 							+ "6. View incoming car payments.\n"
-							+ "7. Logout.");
+							+ "7. Logout.\n\n\n");
 		Scanner scan = new Scanner(System.in);
 		int choice = scan.nextInt();
 		
@@ -32,11 +34,11 @@ public class EmployeeScreen {
 			break;
 		case 2: 
 			System.out.println("Which car would you like to add?");
-			System.out.println("Enter the make: ");
-			String make = scan.nextLine();
-			System.out.println("Enter the model: ");
-			Scanner scan1 = new Scanner(System.in);
-			String model = scan1.nextLine();
+			System.out.println("Enter the make & model");
+			String make = scan.next();
+			scan = new Scanner(System.in);
+			String model = scan.nextLine();
+			scan = new Scanner(System.in);
 			inventory.mainLot.addCar(new Car (make, model));
 			System.out.println("Thanks for adding a car!");
 			EmployeeMenu();
@@ -82,6 +84,9 @@ public class EmployeeScreen {
 			break;
 		case 6:
 			System.out.println("Looking up payments...");
+			for (Client c : inventory.getcList()) {
+				c.viewCarPayments();
+			}
 			
 			EmployeeMenu();
 			break;

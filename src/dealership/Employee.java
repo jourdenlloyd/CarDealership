@@ -46,10 +46,15 @@ public class Employee implements EmployeePermissions, Serializable {
 	@Override
 	public void viewAllPayments() {
 		int i = 0;
-		for(Client c : inv.getcList()) {
+		if (inv.getcList().isEmpty()) {
+			System.out.println("You currently have no payments.");
+		}
+		else { 
+			for (Client c : inv.getcList()) {
 			System.out.println(c.getUsername());
 			c.viewCarPayments();
-		}
+			}	
+		} 
 	}
 
 	@Override

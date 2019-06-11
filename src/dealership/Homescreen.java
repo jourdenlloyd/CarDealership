@@ -93,7 +93,7 @@ public class Homescreen implements Serializable {
 	private void Login(Inventory inventory2, String username, String password, String loginType) {
 		if (loginType.equals("E") || loginType.equals("e")) {
 			if (inventory2.geteList().isEmpty()) {
-				System.out.println("Login not found! Please create an account.");
+				System.out.println("Login not found! Please create an account.\n\n\n");
 				Homescreen homescreen = new Homescreen(inventory2);
 			} else {
 				for (int i = 0; i < inventory2.eList.size(); i++) {

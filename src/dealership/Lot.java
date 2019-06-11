@@ -49,7 +49,7 @@ public class Lot implements Serializable {
 	
 	public void addPurchasedCar(Car car, double offer, Client client) {
 		PurchasedCars.put((car.getMake() + car.getModel()), offer);	
-		removeCar(car);
+		Lot.CarList.remove(car);
 		CarLedger.remove(car.getMake() + car.getModel());
 		client.myNewCar(car);
 		client.carPayment(car, offer);

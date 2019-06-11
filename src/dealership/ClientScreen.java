@@ -13,6 +13,12 @@ public class ClientScreen  {
 		ClientMenu();
 	}
 	
+	public ClientScreen() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
 	public void ClientMenu() {
 		System.out.println("What would you like to do next?");
 		System.out.println("1. View cars currently in the lot.\n"

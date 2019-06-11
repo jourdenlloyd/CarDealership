@@ -24,7 +24,12 @@ public class Client implements ClientPermissions, Serializable {
 
 	@Override
 	public void makeOffer(double i) {
-	myOffers.add(i);
+	ClientScreen sc =new ClientScreen();
+		if(myOffers.isEmpty()) {
+			myOffers.add(i);}
+		else {
+			sc.ClientMenu();
+		}
 	}
 
 	@Override
@@ -53,7 +58,10 @@ public class Client implements ClientPermissions, Serializable {
 	@Override
 	public void viewCarPayments() {
 		for (Car a : myOwnedCars) {
-			System.out.println(myPayments.get(a));	
+			System.out.println(myPayments.get(a));
+			if (myPayments.isEmpty()) {
+				System.out.println("You currently have no payments.");
+			}
 		}
 	}
 
