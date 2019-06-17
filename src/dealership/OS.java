@@ -1,19 +1,28 @@
 package dealership;
 
-import dealership.DAO.InventorySerialDAO;
+import java.sql.Connection;
+
+import dealership.DAO.ClientDAO;
+import dealership.util.ConnectionFactory;
 
 public class OS {
-	public static InventorySerialDAO dao = new InventorySerialDAO();
-	
+
 	public static void main(String[] args) {
-		Inventory inv;
+
+		Connection cn = ConnectionFactory.getConnection();
 		
-		if(dao.loadInventory() == null) {
-			inv = new Inventory();
-			Homescreen homescreen = new Homescreen(inv);
-		} else {
-			inv = dao.loadInventory();
-			Homescreen homescreen = new Homescreen(inv);
-		}
+//		CarDAO cd=new CarDAO();
+//		cd.addCar(new Car(2, "bmw", "xyw", "2019"));
+		
+		ClientDAO cc=new ClientDAO();
+		cc.viewOwnedCars(1);
+		
+		//EmployeeDAO ed = new EmployeeDAO();
+		//ed.addEmployee(new Employee(1, "Jourden", "Lloyd", "jourden@revcars.com", "123"));
+		
+		Homescreen homescreen = new Homescreen();
+		
+		
+		
 	}
 }
