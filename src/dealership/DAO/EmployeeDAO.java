@@ -49,6 +49,9 @@ public class EmployeeDAO implements EmployeePermissions {
 		String sql2 = "update \"Project 0\".payments set payment = (offer/12) where status = 'Accepted';";
 		PreparedStatement stmt2;
 				
+		//TODO possibly add the stored procedure here so that we can reject offers for the same car when one is accepted
+		// String sql3 = "update \"Project 0\".payments set status = 'Rejected' where carid = ? and not clientid = ?;"
+		
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, i);
@@ -56,6 +59,11 @@ public class EmployeeDAO implements EmployeePermissions {
 			stmt.executeUpdate();
 			stmt2 = conn.prepareStatement(sql2);
 			stmt2.executeUpdate();
+			
+			/*
+			 * stmt3 = conn.prepareStatement(sql3); stmt.setInt(1, i); stmt.setInt(2, j);
+			 * stmt.executeUpdate();
+			 */
 			
 		} catch (SQLException e) {
 			LoggingUtil.info();

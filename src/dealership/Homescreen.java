@@ -34,7 +34,7 @@ public class Homescreen {
 						String username = scan.next();
 						scan = new Scanner(System.in);
 						String password = scan.nextLine();
-						// TODO fix the login method
+				// TODO fix the login method
 						checker = false;
 						valid = false;
 					} else {
@@ -56,7 +56,7 @@ public class Homescreen {
 						String name = scan.next();
 						scan = new Scanner(System.in);
 						String pass = scan.nextLine();
-						// TODO fix the create account method
+			// TODO fix the create account method
 					} else {
 						valid1 = true;
 					}
@@ -64,7 +64,7 @@ public class Homescreen {
 				break;
 			case 3:
 				System.out.println("Exiting...");
-				// TODO check to see if saving is still necessary?
+			// TODO check to see if saving is still necessary?
 				System.out.println("You have exited the program...\n\n\n");
 				System.exit(0);
 				break;
