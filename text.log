@@ -391,3 +391,38 @@
 2019-06-18 01:54:37 TRACE root:10 - Start of program.
 
 
+2019-06-18 11:55:15 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:05:11 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:06:25 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:08:25 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:09:22 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:26:54 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:32:02 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:33:20 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:34:01 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:34:51 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:35:12 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:36:47 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:38:58 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:40:57 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:41:50 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:43:15 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:43:57 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:44:17 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:54:58 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:56:57 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 12:59:04 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:02:47 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:03:17 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:23:59 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:30:16 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:31:18 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:34:44 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:35:20 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:36:15 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:36:44 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:39:04 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:40:23 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:43:50 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:45:47 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 13:46:34 INFO  root:18 - SQL exception in addEmployee method.

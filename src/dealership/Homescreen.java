@@ -2,10 +2,12 @@ package dealership;
 
 import java.util.Scanner;
 
+import dealership.DAO.EmployeeDAO;
 import dealership.DAO.LoggingUtil;
 
 public class Homescreen {
-
+	public static EmployeeDAO ed = new EmployeeDAO();
+	
 	public Homescreen() {
 		LoggingUtil.trace();
 
@@ -48,15 +50,19 @@ public class Homescreen {
 					System.out.println("Are you a new employee (E) or a new client (C)?");
 					scan = new Scanner(System.in);
 					String userType = scan.nextLine();
-					if (userType.equals("C") || userType.equals("c")
-							|| (userType.equals("E") || userType.equals("e"))) {
+					if ((userType.equals("E") || userType.equals("e"))) {
+						System.out.println("Please enter your first and last name.");
+						String fn = scan.nextLine();
 						scan = new Scanner(System.in);
+						String ln = scan.nextLine();
 						System.out.println("Please create a username and password.");
 						scan = new Scanner(System.in);
-						String name = scan.next();
+						String us = scan.next();
 						scan = new Scanner(System.in);
 						String pass = scan.nextLine();
-			// TODO fix the create account method
+					//TODO id can't be empty
+					//	Employee ne = new Employee(0, fn, ln, us, pass);
+					//	ed.addEmployee(ne);
 					} else {
 						valid1 = true;
 					}
@@ -67,6 +73,7 @@ public class Homescreen {
 			// TODO check to see if saving is still necessary?
 				System.out.println("You have exited the program...\n\n\n");
 				System.exit(0);
+				LoggingUtil.trace();
 				break;
 			default:
 				System.out.println("Please enter 1-3.");

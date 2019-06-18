@@ -1,5 +1,6 @@
 package dealership.DAO;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,15 +17,16 @@ public class EmployeeDAO implements EmployeePermissions {
 
 	public static Connection conn = ConnectionFactory.getConnection();
 	
-	public void addEmployee(Employee e) {
+	//TODO need to add login method
+	
+	public void addEmployee(Employee ne) {
+		int id = ne.getEmployeeid();
+		String fn = ne.getFirstname();
+		String ln = ne.getLastname();
+		String us = ne.getUsername();
+		String pass = ne.getPassword();
 
-		int id = e.getEmployeeid();
-		String fn = e.getFirstname();
-		String ln = e.getLastname();
-		String us = e.getUsername();
-		String pass = e.getPassword();
-
-		String sql = "INSERT INTO \"Project 0\".employee (employeeid, firstname, lastname, username, password) VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO \"Project 0\".employee (employeeid, firstname, lastname, username, \"password\") VALUES(?, ?, ?, ?, ?);";
 		PreparedStatement stmt;
 
 		try {
@@ -35,8 +37,10 @@ public class EmployeeDAO implements EmployeePermissions {
 			stmt.setString(4, us);
 			stmt.setString(5, pass);
 			stmt.executeUpdate();
-		} catch (SQLException ex) {
+			
 
+		} catch (SQLException ex) {
+			LoggingUtil.info("SQL exception in addEmployee method.");
 			ex.printStackTrace();
 		}
 	}
@@ -61,7 +65,7 @@ public class EmployeeDAO implements EmployeePermissions {
 			stmt2.executeUpdate();
 			
 			/*
-			 * stmt3 = conn.prepareStatement(sql3); stmt.setInt(1, i); stmt.setInt(2, j);
+			 * stmt3 = conn.prepareStatement(sql3);   stmt.setInt(1, i); stmt.setInt(2, j);
 			 * stmt.executeUpdate();
 			 */
 			
@@ -82,6 +86,7 @@ public class EmployeeDAO implements EmployeePermissions {
 			stmt.setInt(2, j);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
+			LoggingUtil.info("SQL exception in rejectOffers method.");
 			e.printStackTrace();
 		}
 	}
@@ -100,7 +105,7 @@ public class EmployeeDAO implements EmployeePermissions {
 			}
 
 		} catch (SQLException ex) {
-
+			LoggingUtil.info("SQL exception in viewAllPayments method.");
 			ex.printStackTrace();
 		}
 	}
@@ -119,7 +124,7 @@ public class EmployeeDAO implements EmployeePermissions {
 			}
 
 		} catch (SQLException ex) {
-
+			LoggingUtil.info("SQL exception in viewAllCustomers method.");
 			ex.printStackTrace();
 		}
 	}

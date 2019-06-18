@@ -1,21 +1,19 @@
 package dealership;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Car {
 	private int carID;
 	private String make;
 	private String model;
 	private String year;
 
+//the new theme is 3D printed cars from video games, currently GTAV but theoretical patch for more games
+	
 	//args constructor
 	public Car(int carID, String make, String model, String year) {
 		this.carID = carID;
 		this.make = make;
 		this.model = model;
 		this.year = year;
-
 	}
 	
 	//no args constructor

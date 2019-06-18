@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import dealership.DAO.CarDAO;
 import dealership.DAO.ClientDAO;
+import dealership.DAO.LoggingUtil;
 
 public class ClientScreen {
 
@@ -21,6 +22,8 @@ public class ClientScreen {
 	}
 
 	public void ClientMenu() {
+		LoggingUtil.trace();
+		
 		System.out.println("___ Welcome to Lloyd Cars Client Portal! ___\n");
 		System.out.println("What would you like to do next?");
 		System.out.println("1. View cars currently in the lot.\n" 

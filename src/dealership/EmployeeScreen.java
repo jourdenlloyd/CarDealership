@@ -3,6 +3,7 @@ package dealership;
 import java.util.Scanner;
 import dealership.DAO.CarDAO;
 import dealership.DAO.EmployeeDAO;
+import dealership.DAO.LoggingUtil;
 import dealership.inter.ClientPermissions;
 
 public class EmployeeScreen {
@@ -19,6 +20,8 @@ public class EmployeeScreen {
 	}
 
 	public void EmployeeMenu() {
+		LoggingUtil.trace();
+		
 		System.out.println("___ Welcome to Lloyd Cars Employee Portal! ___\n");
 		System.out.println("What would you like to do next?");
 		System.out.println("1. View cars currently in the lot.\n" 

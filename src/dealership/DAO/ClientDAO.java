@@ -12,6 +12,8 @@ import dealership.util.ConnectionFactory;
 
 public class ClientDAO implements ClientPermissions {
 	public static Connection conn = ConnectionFactory.getConnection();
+	
+	//TODO need to add login method
 
 	public void addClient(Client c) {
 
@@ -33,6 +35,7 @@ public class ClientDAO implements ClientPermissions {
 			stmt.setString(5, pass);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
+			LoggingUtil.info("SQL exception in addClient method.");
 			e.printStackTrace();
 		}
 
@@ -53,6 +56,7 @@ public class ClientDAO implements ClientPermissions {
 			System.out.println("Your offer has been made.\n");
 
 		} catch (SQLException e) {
+			LoggingUtil.info("SQL exception in makeOffer method.");
 			e.printStackTrace();
 		}
 	}
@@ -77,6 +81,7 @@ public class ClientDAO implements ClientPermissions {
 						rs.getInt(1) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t" + rs.getString(4));
 			}
 		} catch (SQLException e) {
+			LoggingUtil.info("SQL exception in viewOwnedCars method.");
 			e.printStackTrace();
 		}
 
@@ -98,6 +103,7 @@ public class ClientDAO implements ClientPermissions {
 			}
 
 		} catch (SQLException e) {
+			LoggingUtil.info("SQL exception in viewCarPayments method.");
 			e.printStackTrace();
 		}
 	}
