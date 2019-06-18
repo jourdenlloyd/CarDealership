@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import dealership.DAO.LoggingUtil;
 
 public class ConnectionFactory {
 	private static String url;
@@ -20,9 +21,7 @@ public class ConnectionFactory {
 		if (cf == null) {
 			cf = new ConnectionFactory();
 		}
-
 		return cf.createConnection();
-
 	}
 
 	private ConnectionFactory() {
@@ -34,6 +33,7 @@ public class ConnectionFactory {
 			user = prop.getProperty("user");
 			password = prop.getProperty("password");
 		} catch (FileNotFoundException e) {
+			LoggingUtil.info();
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -47,10 +47,9 @@ public class ConnectionFactory {
 			conn = DriverManager.getConnection(url, user, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("Failed to make DB Connection\n\n\n");
+			LoggingUtil.warn("Failed to make DB connection\n");
 		}
 
 		return conn;
-
 	}
 }

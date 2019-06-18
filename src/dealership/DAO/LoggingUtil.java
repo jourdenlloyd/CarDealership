@@ -30,4 +30,28 @@ public class LoggingUtil {
 		log.fatal(msg);
 	}
 
+	public static void trace() {
+		
+	}
+	
+	public static void debug() {
+		
+	}
+	
+	public static void info() {
+		
+	}
+	
+	public static void warn() {
+		
+	}
+	
+	public static void error() {
+		
+	}
+	
+	public static void fatal() {
+		
+	}
+
 }

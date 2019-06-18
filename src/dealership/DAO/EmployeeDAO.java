@@ -5,17 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import dealership.Car;
 import dealership.Client;
 import dealership.Employee;
 import dealership.inter.EmployeePermissions;
 import dealership.util.ConnectionFactory;
+import dealership.DAO.LoggingUtil;
 
 public class EmployeeDAO implements EmployeePermissions {
 
 	public static Connection conn = ConnectionFactory.getConnection();
-
+	
 	public void addEmployee(Employee e) {
 
 		int id = e.getEmployeeid();
@@ -44,26 +44,35 @@ public class EmployeeDAO implements EmployeePermissions {
 	@Override
 	public void acceptOffers(int i, int j) {
 		
-		String sql = "update \"Project 0\".payments set status = 'Accepted' where carid = " + i + "and clientid = " + j;
+		String sql = "update \"Project 0\".payments set status = 'Accepted' where carid = ? and clientid = ?;";
 		PreparedStatement stmt;
-//		String sql2 = "update \"Project 0\".payments set payment = (offer/12) where status = 'Accepted';";
-//		PreparedStatement stmt2;
+		String sql2 = "update \"Project 0\".payments set payment = (offer/12) where status = 'Accepted';";
+		PreparedStatement stmt2;
 				
 		try {
 			stmt = conn.prepareStatement(sql);
-			//stmt2 = conn.prepareStatement(sql2);
+			stmt.setInt(1, i);
+			stmt.setInt(2, j);
+			stmt.executeUpdate();
+			stmt2 = conn.prepareStatement(sql2);
+			stmt2.executeUpdate();
+			
 		} catch (SQLException e) {
+			LoggingUtil.info();
 			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public void rejectOffers(int i, int j) {
-		String sql = "update payments set status = 'Rejected' where carid =" + i + "and clientid =" + j;
+		String sql = "update \"Project 0\".payments set status = 'Rejected' where carid = ? and clientid = ?;";
 		PreparedStatement stmt;
 
 		try {
 			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, i);
+			stmt.setInt(2, j);
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

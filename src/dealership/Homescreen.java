@@ -1,6 +1,5 @@
 package dealership;
 
-import java.io.Serializable;
 import java.util.Scanner;
 
 import dealership.DAO.LoggingUtil;
@@ -8,9 +7,9 @@ import dealership.DAO.LoggingUtil;
 public class Homescreen {
 
 	public Homescreen() {
-		LoggingUtil.trace("Start of program.\n\n");
+		LoggingUtil.trace();
 
-		System.out.println("___ Welcome to Lloyd Cars! ___\n");
+		System.out.println("___ Welcome to Lloyd's 3D Cars! ___\n");
 		System.out.println("1. " + "Please login to continue. ");
 		System.out.println("2. " + "Need to sign up? ");
 		System.out.println("3. " + "Ready to exit? ");
