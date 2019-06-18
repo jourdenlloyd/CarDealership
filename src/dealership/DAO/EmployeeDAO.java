@@ -17,7 +17,25 @@ public class EmployeeDAO implements EmployeePermissions {
 
 	public static Connection conn = ConnectionFactory.getConnection();
 	
-	//TODO need to add login method
+	public void employeeLogin(String us) {
+		
+		String sql = "SELECT username FROM \"Project 0\".employee where username = " + "'" + us + "'";
+		Statement stmt;
+
+		try {
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				System.out.println("You have logged in!\n");
+			}
+			
+		} catch (SQLException e1) {
+			LoggingUtil.warn("The username or password is not valid.\n");
+			e1.printStackTrace();
+		}
+		
+	}
 	
 	public void addEmployee(Employee ne) {
 		int id = ne.getEmployeeid();
@@ -37,7 +55,7 @@ public class EmployeeDAO implements EmployeePermissions {
 			stmt.setString(4, us);
 			stmt.setString(5, pass);
 			stmt.executeUpdate();
-			
+			System.out.println("Employee account created.\n\n");
 
 		} catch (SQLException ex) {
 			LoggingUtil.info("SQL exception in addEmployee method.");
@@ -47,6 +65,7 @@ public class EmployeeDAO implements EmployeePermissions {
 
 	@Override
 	public void acceptOffers(int i, int j) {
+		//does this count as a stored procedure since it does two statements?
 		
 		String sql = "update \"Project 0\".payments set status = 'Accepted' where carid = ? and clientid = ?;";
 		PreparedStatement stmt;

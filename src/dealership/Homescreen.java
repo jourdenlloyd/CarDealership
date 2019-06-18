@@ -2,12 +2,14 @@ package dealership;
 
 import java.util.Scanner;
 
+import dealership.DAO.ClientDAO;
 import dealership.DAO.EmployeeDAO;
 import dealership.DAO.LoggingUtil;
 
 public class Homescreen {
 	public static EmployeeDAO ed = new EmployeeDAO();
-	
+	public static ClientDAO cd = new ClientDAO();
+
 	public Homescreen() {
 		LoggingUtil.trace();
 
@@ -28,19 +30,27 @@ public class Homescreen {
 					System.out.println("Are you an employee (E) or a client (C)?");
 					scan = new Scanner(System.in);
 					String loginType = scan.nextLine();
-					if (loginType.equals("C") || loginType.equals("c")
-							|| (loginType.equals("E") || loginType.equals("e"))) {
+					if (loginType.equals("E") || loginType.equals("e")) {
 						scan = new Scanner(System.in);
 						System.out.println("Please enter your username and password.");
 						scan = new Scanner(System.in);
-						String username = scan.next();
+						String us = scan.next();
 						scan = new Scanner(System.in);
-						String password = scan.nextLine();
-				// TODO fix the login method
-						checker = false;
-						valid = false;
-					} else {
-						valid = true;
+						String pass = scan.nextLine();
+						
+						ed.employeeLogin(us);
+						EmployeeScreen employeescreen = new EmployeeScreen();
+						//valid = false;
+					} else if (loginType.equals("C") || loginType.equals("c")) {
+						scan = new Scanner(System.in);
+						System.out.println("Please enter your username and password.");
+						scan = new Scanner(System.in);
+						String us = scan.next();
+						scan = new Scanner(System.in);
+						String pass = scan.nextLine();
+						
+						cd.clientLogin(us);
+						ClientScreen clientscreen = new ClientScreen();
 					}
 				}
 				break;
@@ -51,6 +61,9 @@ public class Homescreen {
 					scan = new Scanner(System.in);
 					String userType = scan.nextLine();
 					if ((userType.equals("E") || userType.equals("e"))) {
+						System.out.println("Please enter your employeeID.");
+						int id = scan.nextInt();
+						scan = new Scanner(System.in);
 						System.out.println("Please enter your first and last name.");
 						String fn = scan.nextLine();
 						scan = new Scanner(System.in);
@@ -60,17 +73,38 @@ public class Homescreen {
 						String us = scan.next();
 						scan = new Scanner(System.in);
 						String pass = scan.nextLine();
-					//TODO id can't be empty
-					//	Employee ne = new Employee(0, fn, ln, us, pass);
-					//	ed.addEmployee(ne);
+
+						Employee ne = new Employee(id, fn, ln, us, pass);
+						ed.addEmployee(ne);
+						Homescreen homescreen = new Homescreen();
 					} else {
-						valid1 = true;
+						if ((userType.equals("C") || userType.equals("c"))) {
+							System.out.println("Please enter your customerID.");
+							int id = scan.nextInt();
+							scan = new Scanner(System.in);
+							System.out.println("Please enter your first and last name.");
+							String fn = scan.nextLine();
+							scan = new Scanner(System.in);
+							String ln = scan.nextLine();
+							System.out.println("Please create a username and password.");
+							scan = new Scanner(System.in);
+							String us = scan.next();
+							scan = new Scanner(System.in);
+							String pass = scan.nextLine();
+
+							Client c = new Client(id, fn, ln, us, pass);
+							cd.addClient(c);
+							System.out.println("Client account created.\n\n");
+							Homescreen homescreen = new Homescreen();
+						}
+						else {
+							valid = true;
 					}
+					break;
 				}
-				break;
+			}		
 			case 3:
 				System.out.println("Exiting...");
-			// TODO check to see if saving is still necessary?
 				System.out.println("You have exited the program...\n\n\n");
 				System.exit(0);
 				LoggingUtil.trace();
@@ -81,6 +115,7 @@ public class Homescreen {
 				break;
 			}
 		}
+		System.out.println("\n\n");
 	}
 
 }

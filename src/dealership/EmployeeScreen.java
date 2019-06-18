@@ -8,21 +8,18 @@ import dealership.inter.ClientPermissions;
 
 public class EmployeeScreen {
 
-	Employee employee;
 	public static CarDAO c = new CarDAO();
 	public static EmployeeDAO e = new EmployeeDAO();
 
-	public EmployeeScreen(Employee emp) {
-
-		employee = emp;
-		System.out.println("Hello, " + employee.getUsername() + " you have logged into Lloyd Cars Portal!\n\n");
-		EmployeeMenu();
+	public EmployeeScreen() {
+		System.out.println("___ Welcome to Lloyd Cars Employee Portal! ___\n");
+			EmployeeMenu();
 	}
 
 	public void EmployeeMenu() {
 		LoggingUtil.trace();
-		
-		System.out.println("___ Welcome to Lloyd Cars Employee Portal! ___\n");
+		System.out.println("\n");
+		System.out.println("___ Lloyd Cars Employee Portal ___\n");
 		System.out.println("What would you like to do next?");
 		System.out.println("1. View cars currently in the lot.\n" 
 							+ "2. Add a car to the lot.\n"
@@ -31,7 +28,7 @@ public class EmployeeScreen {
 							+ "5. Reject offers for cars in the lot.\n" 
 							+ "6. View incoming car payments.\n" 
 							+ "7. View all customers.\n"
-							+ "8. Logout.\n\n\n");
+							+ "8. Logout.\n");
 		
 		boolean checker = true;
 		Scanner scan = new Scanner(System.in);
@@ -40,6 +37,7 @@ public class EmployeeScreen {
 		while (checker) {
 			switch (choice) {
 			case 1:
+				System.out.println("____ Current Cars on the Lot ____" );
 				c.getAllCars();
 				EmployeeMenu();
 				break;
@@ -61,19 +59,22 @@ public class EmployeeScreen {
 				EmployeeMenu();
 				break;
 			case 3:
+				System.out.println("____ Current Cars on the Lot ____" );
 				c.getAllCars();
 				System.out.println("Which car would you like to remove? Please enter the carID of that item.");
 				int oldCar = scan.nextInt();
 				c.removeCar(oldCar);
-				System.out.println("The car " + oldCar + " has been removed.\n\n");
+				System.out.println("\n");
 				EmployeeMenu();
 				break;
 			case 4:
 				System.out.println("For which car would you like to accept offers?\n");
+				System.out.println("____ Current Cars on the Lot ____" );
 				c.getAllCars();
 				System.out.println("Please choose a car.\n");
 				int acceptedCar = scan.nextInt();
-				//	maybe add view all customers here
+				System.out.println("____ Current Client List ____" );
+				e.viewAllCustomers();
 				System.out.println("Please choose a client.\n");
 				scan = new Scanner(System.in);
 				int clientID = scan.nextInt();
@@ -112,6 +113,7 @@ public class EmployeeScreen {
 				checker = true;
 				break;
 			}
-		}
+		} System.out.println("\n");
 	}
+	
 }

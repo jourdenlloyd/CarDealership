@@ -13,7 +13,25 @@ import dealership.util.ConnectionFactory;
 public class ClientDAO implements ClientPermissions {
 	public static Connection conn = ConnectionFactory.getConnection();
 	
-	//TODO need to add login method
+public void clientLogin(String us) {
+		
+		String sql = "SELECT username FROM \"Project 0\".client where username = " + "'" + us + "'";
+		Statement stmt;
+
+		try {
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				System.out.println("You have logged in!\n");
+			}
+			
+		} catch (SQLException e1) {
+			LoggingUtil.warn("The username or password is not valid.\n");
+			e1.printStackTrace();
+		}
+		
+	}
 
 	public void addClient(Client c) {
 
@@ -72,7 +90,7 @@ public class ClientDAO implements ClientPermissions {
 			ResultSet rs = st.executeQuery(sql);
 
 			if (rs.next() == false) {
-				System.out.println("You have no cars.");
+				System.out.println("You have no cars.\n");
 			} else
 				do {
 				} while (rs.next());

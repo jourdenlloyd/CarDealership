@@ -426,3 +426,27 @@
 2019-06-18 13:43:50 INFO  root:18 - SQL exception in addEmployee method.
 2019-06-18 13:45:47 INFO  root:18 - SQL exception in addEmployee method.
 2019-06-18 13:46:34 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 14:19:21 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-18 14:22:56 INFO  root:18 - SQL exception in addClient method.
+2019-06-18 15:13:33 WARN  root:22 - The username or password is not valid.
+
+2019-06-18 15:16:41 WARN  root:22 - The username or password is not valid.
+
+2019-06-18 15:17:40 WARN  root:22 - The username or password is not valid.
+
+2019-06-18 15:19:37 WARN  root:22 - The username or password is not valid.
+
+2019-06-18 15:22:52 WARN  root:22 - The username or password is not valid.
+
+2019-06-18 15:28:57 WARN  root:22 - The username or password is not valid.
+
+2019-06-18 15:30:47 WARN  root:22 - The username or password is not valid.
+
+2019-06-18 15:33:20 WARN  root:22 - The username or password is not valid.
+
+2019-06-18 15:36:48 WARN  root:22 - The username or password is not valid.
+
+2019-06-18 16:57:27 ERROR root:26 - ERROR: relation "employee" does not exist
+  Position: 15
+2019-06-18 16:57:27 ERROR root:26 - ERROR: relation "payments" does not exist
+  Position: 8

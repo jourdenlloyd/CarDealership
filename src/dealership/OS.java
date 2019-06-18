@@ -13,9 +13,9 @@ public class OS {
 	Connection cn = ConnectionFactory.getConnection();
 	LoggingUtil.trace();
 		
-		EmployeeDAO ed = new EmployeeDAO();
-		Employee ne = new Employee(11, "Blake", "Substitute", "trainer@revature.com", "1234");
-		ed.addEmployee(ne);
+//		EmployeeDAO ed = new EmployeeDAO();
+//		Employee ne = new Employee(11, "Blake", "Substitute", "trainer@revature.com", "1234");
+//		ed.addEmployee(ne);
 		
 //		ClientDAO cd = new ClientDAO();
 //		Client c = new Client(3, "Tester", "Testington", "test@mail.com", "abc"); 

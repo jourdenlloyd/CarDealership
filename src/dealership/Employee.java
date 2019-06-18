@@ -24,6 +24,10 @@ public class Employee implements EmployeePermissions {
 		super();
 	}
 
+	public Employee(String us, String pass) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void acceptOffers(int i, int j) {
 

@@ -43,8 +43,9 @@ public class CarDAO implements CarServices {
 
 		try {
 			stmt = conn.createStatement();
-			stmt.execute(sql);
-
+			ResultSet rs = stmt.executeQuery(sql);
+			System.out.println("The car has been removed.\n");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -63,7 +64,7 @@ public class CarDAO implements CarServices {
 
 			while (rs.next()) {
 				System.out.println(
-						rs.getInt(1) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t" + rs.getDouble(4));
+						rs.getInt(1) + " " + rs.getString(2) + "\t" + rs.getString(3) + "\t" + rs.getInt(4));
 			}
 
 		} catch (SQLException e) {
@@ -75,7 +76,6 @@ public class CarDAO implements CarServices {
 
 	@Override
 	public void updateCar(int i) {
-		// TODO Auto-generated method stub
 
 	}
 

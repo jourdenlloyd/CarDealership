@@ -12,19 +12,14 @@ public class ClientScreen {
 	public static CarDAO c = new CarDAO();
 	public static ClientDAO cd = new ClientDAO();
 
-	public ClientScreen(Client user) {
-		client = user;
-		System.out.println("Hello, " + user.getUsername() + " you have logged into Lloyd Cars Portal!\n");
-		ClientMenu();
-	}
-
 	public ClientScreen() {
+		System.out.println("___ Welcome to Lloyd Cars Client Portal! ___\n");
+		ClientMenu();
 	}
 
 	public void ClientMenu() {
 		LoggingUtil.trace();
-		
-		System.out.println("___ Welcome to Lloyd Cars Client Portal! ___\n");
+		System.out.println("___ Lloyd Cars Client Portal ___\n");
 		System.out.println("What would you like to do next?");
 		System.out.println("1. View cars currently in the lot.\n" 
 							+ "2. Make an offer on a viewed car.\n"
@@ -39,6 +34,7 @@ public class ClientScreen {
 		while (checker) {
 			switch (choice) {
 			case 1:
+				System.out.println("____ Current Cars on the Lot ____" );
 				c.getAllCars();
 				ClientMenu();
 				break;
