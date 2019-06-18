@@ -3,11 +3,13 @@ package dealership;
 import java.util.Scanner;
 
 import dealership.DAO.CarDAO;
+import dealership.DAO.ClientDAO;
 
 public class ClientScreen {
 	
 	Client client;
 	public static CarDAO c = new CarDAO();
+	public static ClientDAO cd = new ClientDAO();
 
 	public ClientScreen(Client user) {
 		client = user;
@@ -40,21 +42,20 @@ public class ClientScreen {
 
 			System.out.println("How much would you like to bid?\n");
 			double b = scan.nextDouble();
-			client.makeOffer(b);
-			
+			cd.makeOffer(b, b, b);
+			//TODO 
 			ClientMenu();
 			break;
 		case 3:
-			System.out.println("Checking for owned cars...");
-			System.out.println("Enter your clientID number.");
+			System.out.println("To see your current cars, please enter your clientID number.");
 			int i = scan.nextInt();
-			c.viewOwnedCars(i);
-			//client.viewOwnedCars();
+			System.out.println("Checking for owned cars...\n");
+			cd.viewOwnedCars(i);
 			ClientMenu();
 			break;
 		case 4:
 			System.out.println("Checking for car payments...");
-			client.viewCarPayments();
+			//client.viewCarPayments();
 			ClientMenu();
 			break;
 		case 5:

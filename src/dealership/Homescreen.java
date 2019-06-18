@@ -11,9 +11,9 @@ public class Homescreen {
 		LoggingUtil.trace("Start of program.\n\n");
 
 		System.out.println("___ Welcome to Lloyd Cars! ___\n");
-		System.out.println("Please login to continue. " + "Press 1");
-		System.out.println("Need to sign up? " + "Press 2");
-		System.out.println("Ready to exit? " + "Press 3");
+		System.out.println("1. " + "Please login to continue. ");
+		System.out.println("2. " + "Need to sign up? ");
+		System.out.println("3. " + "Ready to exit? ");
 
 		boolean checker = true;
 		Scanner scan = new Scanner(System.in);
@@ -35,7 +35,7 @@ public class Homescreen {
 						String username = scan.next();
 						scan = new Scanner(System.in);
 						String password = scan.nextLine();
-						//TODO fix the login method
+			//TODO fix the login method
 						checker = false;
 						valid = false;
 					} else {
@@ -57,7 +57,7 @@ public class Homescreen {
 						String name = scan.next();
 						scan = new Scanner(System.in);
 						String pass = scan.nextLine();
-						//TODO fix the create account method
+			//TODO fix the create account method
 					} else {
 						valid1 = true;
 					}
@@ -65,7 +65,7 @@ public class Homescreen {
 				break;
 			case 3:
 				System.out.println("Exiting...");
-				//TODO check to see if saving is still necessary?
+		//TODO check to see if saving is still necessary?
 				System.out.println("You have exited the program...\n\n\n");
 				System.exit(0);
 				break;
@@ -75,15 +75,6 @@ public class Homescreen {
 				break;
 			}
 		}
-	}
-
-	private void CreateAccount(String username, String password, String userType) {
-		
-
-	}
-
-	private void Login(String username, String password, String loginType) {
-	
 	}
 
 }

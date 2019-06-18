@@ -12,6 +12,8 @@ public interface EmployeePermissions {
 	public double rejectOffers(Car car, double offer, Client client);
 
 	public void viewAllPayments();
+	
+	public void viewAllCustomers();
 
 
 }

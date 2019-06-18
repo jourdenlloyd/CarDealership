@@ -16,8 +16,6 @@ public class CarDAO implements CarServices {
 	
 	@Override
 	public void addCar(Car c) {
-		//Connection conn = ConnectionFactory.getConnection();
-
 	        int i = c.getCarID();
 	        String s1 = c.getMake();
 	        String s2 = c.getModel();
@@ -35,13 +33,11 @@ public class CarDAO implements CarServices {
 	            
 	        } catch (SQLException e) {
 	            e.printStackTrace();
-	        }
-		
+	        	}
 	}
 
 	@Override
 	public void removeCar(int i) {
-		
         String sql = "DELETE FROM \"Project 0\".car WHERE carid=" + i;
         Statement stmt;
         
@@ -51,9 +47,7 @@ public class CarDAO implements CarServices {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-        
-		
+			}
 	}
 
 	@Override
@@ -65,11 +59,10 @@ public class CarDAO implements CarServices {
         try {
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            System.out.println("CarID"+ "\t"+ "Make"+ "\t" + "Model"+ "\t"+ "Year");
+            	System.out.println("CarID"+ "\t"+ "Make"+ "\t" + "Model"+ "\t"+ "Year");
+           
             while(rs.next()) {
-                
-        
-            System.out.println(rs.getInt(1)+"\t" +rs.getString(2) + "\t" + rs.getString(3)+"\t"+rs.getDouble(4));
+            	System.out.println(rs.getInt(1)+"\t" +rs.getString(2) + "\t" + rs.getString(3)+"\t"+rs.getDouble(4));
             }
                     
         } catch (SQLException e) {
@@ -84,24 +77,4 @@ public class CarDAO implements CarServices {
 		
 	}
 
-
-	@Override
-	public void viewOwnedCars(int i) {
-		String sql="select * from \"Project 0\".car where clientid = "+ i;
-		
-		Statement stmt;
-		
-		try {
-			stmt=conn.createStatement();
-		
-			ResultSet rs=stmt.executeQuery(sql);
-			if(rs.next()==false) System.out.println("You have no cars.");
-			else
-			do { System.out.println(rs.getInt(1)+"\t" +rs.getString(2) + "\t" + rs.getString(3)+"\t"+rs.getDouble(4));
-			} while(rs.next());
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}	
-	}
 }

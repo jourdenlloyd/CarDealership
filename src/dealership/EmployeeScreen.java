@@ -42,8 +42,9 @@ public class EmployeeScreen {
 			scan = new Scanner(System.in);
 			String year = scan.nextLine();
 			scan = new Scanner(System.in); 
+			
 			c.addCar(new Car(carID, make, model, year));
-			System.out.println("Thanks for adding a car!");
+			System.out.println("Thanks for adding a car!\n\n");
 			EmployeeMenu();
 			break;
 		case 3:
@@ -51,7 +52,7 @@ public class EmployeeScreen {
 			System.out.println("Which car would you like to remove? Please enter the number of that item.");
 			int oldCar = scan.nextInt();
 			c.removeCar(oldCar);
-			System.out.println("The car " + oldCar + " has been removed.");
+			System.out.println("The car " + oldCar + " has been removed.\n\n");
 			EmployeeMenu();
 			break;
 		case 4:
@@ -80,7 +81,7 @@ public class EmployeeScreen {
 			EmployeeMenu();
 			break;
 		case 6:
-			System.out.println("Looking up payments...");
+			System.out.println("Looking up payments...\n");
 			//new method here
 
 			EmployeeMenu();

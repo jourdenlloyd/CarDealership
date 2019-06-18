@@ -8,10 +8,8 @@ public class Car {
 	private String make;
 	private String model;
 	private String year;
-	
 
-	private Map<Client, Double> offers = new HashMap<>();
-
+	//args constructor
 	public Car(int carID, String make, String model, String year) {
 		this.carID = carID;
 		this.make = make;
@@ -19,31 +17,27 @@ public class Car {
 		this.year = year;
 
 	}
-
-	public Car ()
-	{}
+	
+	//no args constructor
+	public Car () {
+		
+	}
+	
+	//getters and setters
 	public String getMake() {
 		return make;
 	}
-
+	
 	public void setMake(String make) {
 		this.make = make;
 	}
-
+	
 	public String getModel() {
 		return model;
 	}
 
 	public void setModel(String model) {
 		this.model = model;
-	}
-
-	public Map<Client, Double> getOffer() {
-		return offers;
-	}
-
-	public void setOffer(Client client, double offer) {
-		this.offers.put(client, offer);
 	}
 
 	public int getCarID() {

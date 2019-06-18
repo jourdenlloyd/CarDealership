@@ -1,19 +1,16 @@
 package dealership;
 
-import java.io.Serializable;
-import java.util.List;
-
 import dealership.inter.EmployeePermissions;
 
 public class Employee implements EmployeePermissions{
-
+	//fields
 	private int employeeid;
 	private String firstname;
 	private String lastname;
 	private String username = "";
 	private String password = "";
 	
-//args constructor
+	//args constructor
 	public Employee(int employeeid, String firstname, String lastname, String username, String password) {
 		this.employeeid = employeeid;
 		this.firstname = firstname;
@@ -22,7 +19,7 @@ public class Employee implements EmployeePermissions{
 		this.password = password;
 	}
 	
-//no args constructor
+	//no args constructor
 	public Employee() {
 		super();
 	}
@@ -46,6 +43,12 @@ public class Employee implements EmployeePermissions{
 		//new method here
 		int i = 0;
 			System.out.println("You currently have no payments.");
+		
+	}
+	
+	@Override
+	public void viewAllCustomers() {
+		// TODO Auto-generated method stub
 		
 	}
 

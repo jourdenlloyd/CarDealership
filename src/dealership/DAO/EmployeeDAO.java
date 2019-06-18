@@ -11,6 +11,7 @@ import dealership.inter.EmployeePermissions;
 import dealership.util.ConnectionFactory;
 
 public class EmployeeDAO implements EmployeePermissions {
+	
 	public static Connection conn = ConnectionFactory.getConnection();
 
 	public void addEmployee(Employee e) {
@@ -21,7 +22,7 @@ public class EmployeeDAO implements EmployeePermissions {
         PreparedStatement stmt;
         
         try {
-            stmt=conn.prepareStatement(sql);
+            stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             stmt.setString(2,fn);
             stmt.setString(3,ln);
@@ -31,9 +32,7 @@ public class EmployeeDAO implements EmployeePermissions {
         } catch (SQLException ex) {
             
             ex.printStackTrace();
-        }
-        
-            
+        }   
     }
 
 	@Override
@@ -50,6 +49,12 @@ public class EmployeeDAO implements EmployeePermissions {
 
 	@Override
 	public void viewAllPayments() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void viewAllCustomers() {
 		// TODO Auto-generated method stub
 		
 	}

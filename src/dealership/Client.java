@@ -7,18 +7,20 @@ import java.util.Map;
 
 import dealership.inter.ClientPermissions;
 
-public class Client implements ClientPermissions, Serializable {
-	
+public class Client implements ClientPermissions {
+	//no args constructor
 	public Client() {
 		super();
 	}
-
+	
+	//fields
 	private int clientid;
 	private String firstname;
 	private String lastname;
 	private String username = "";
 	private String password = "";
-
+	
+	//args constructor
 	public Client(int clientid, String firstname, String lastname, String username, String password) {
 		super();
 		this.clientid = clientid;
@@ -27,46 +29,8 @@ public class Client implements ClientPermissions, Serializable {
 		this.username = username;
 		this.password = password;
 	}
-	
-private ArrayList<Double> myOffers = new ArrayList<Double>();
-	private ArrayList<Car> myOwnedCars = new ArrayList<Car>();
-	private Map<Car, ArrayList<Double>> myPayments = new HashMap<Car, ArrayList<Double>>();
 
-
-	public void viewOffers() {
-		for (Double a : myOffers) {
-			System.out.println(myOffers);
-		}
-	}
-
-	@Override
-	public void makeOffer(double i) {
-		myOffers.add(i);
-	}
-
-
-	public void myNewCar(Car car) {
-		myOwnedCars.add(car);
-	}
-
-	public void carPayment(Car car, double offer) {
-		ArrayList<Double> cp = new ArrayList<Double>();
-		for (int i = 0; i < 13; i++) {
-			cp.add((offer / 12));
-		}
-		myPayments.put(car, cp);
-	}
-
-	@Override
-	public void viewCarPayments() {
-		for (Car a : myOwnedCars) {
-			System.out.println(myPayments.get(a));
-			if (myPayments.isEmpty()) {
-				System.out.println("You currently have no payments.");
-			}
-		}
-	}
-
+	//getters and setters
 	public String getUsername() {
 		return username;
 	}
@@ -107,8 +71,22 @@ private ArrayList<Double> myOffers = new ArrayList<Double>();
 		this.password = password;
 	}
 
+	
+	//abstract methods
 	@Override
 	public void viewOwnedCars(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void viewCarPayments(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void makeOffer(double i, double j, double pr) {
 		// TODO Auto-generated method stub
 		
 	}

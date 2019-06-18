@@ -35,10 +35,22 @@ public class ClientDAO implements ClientPermissions {
     }
 
 	@Override
-	public void makeOffer(double i) {
-		// TODO Auto-generated method stub
+	public void makeOffer(double i, double j, double pr) {
+		PreparedStatement stmt;
+		String sql = "INSERT INTO \"Project 0\".payments (clientid, carid, offer, status)" + "VALUES(?, ?, ?, 'Pending');";
 		
-	}
+		 try {
+	            stmt = conn.prepareStatement(sql);
+	            stmt.setDouble(1, i);
+	            stmt.setDouble(2, j);
+	            stmt.setDouble(3, pr);
+	            stmt.executeUpdate();
+	            System.out.println("Your offer has been made.\n");
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
 
 	@Override
 	public void viewOwnedCars(int i) {
@@ -48,20 +60,38 @@ public class ClientDAO implements ClientPermissions {
 		
 		try {
 			st=conn.createStatement();
-			ResultSet rs=st.executeQuery(sql);
+			ResultSet rs = st.executeQuery(sql);
 			
-			if(rs.next()) System.out.println(rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3)+"\t"+rs.getString(4));
-					
+			if(rs.next() == false) {
+				System.out.println("You have no cars.");
+		}
+		else
+			do {
+			}	while (rs.next()); {
+				System.out.println(rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3)+"\t"+rs.getString(4));
+				}		
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+			}
 		
 	}
 
 	@Override
-	public void viewCarPayments() {
-		// TODO Auto-generated method stub
+	public void viewCarPayments(int i) {
+		PreparedStatement stmt;
+		String sql = "select car.make, car.model, payments.offer, payments.payment from \"Project 0\".car inner join \"Project 0\".payments on car.clientid =" + i;
 		
-	}
-	
+		try {
+            stmt = conn.prepareStatement(sql);
+            ResultSet rs =  stmt.executeQuery();
+           
+            System.out.println("Car" + "\t" + "\t" + "Offer" + "\t" + "Payment");
+            while (rs.next()) {
+            		System.out.println(rs.getString(1)+"\t"+rs.getString(2)+"\t"+rs.getInt(3)+"\t"+rs.getInt(4));
+            }
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+	}	
 }
