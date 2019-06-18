@@ -7,9 +7,9 @@ import dealership.Client;
 
 public interface EmployeePermissions {
 
-	public double acceptOffers(Car car, double offer, Client client);
+	public void acceptOffers(int i, int j);
 
-	public double rejectOffers(Car car, double offer, Client client);
+	public void rejectOffers(int i, int j);
 
 	public void viewAllPayments();
 	

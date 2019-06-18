@@ -5,12 +5,12 @@ import dealership.DAO.CarDAO;
 import dealership.inter.ClientPermissions;
 
 public class EmployeeScreen {
-	
+
 	Employee employee;
 	public static CarDAO c = new CarDAO();
 
 	public EmployeeScreen(Employee emp) {
-		
+
 		employee = emp;
 		System.out.println("Hello, " + employee.getUsername() + " you have logged into Lloyd Cars Portal!\n\n");
 		EmployeeMenu();
@@ -33,7 +33,7 @@ public class EmployeeScreen {
 		case 2:
 			System.out.println("Which car would you like to add?");
 			System.out.println("Enter the carID, make, model, & year.");
-			
+
 			int carID = scan.nextInt();
 			scan = new Scanner(System.in);
 			String make = scan.nextLine();
@@ -41,8 +41,8 @@ public class EmployeeScreen {
 			String model = scan.nextLine();
 			scan = new Scanner(System.in);
 			String year = scan.nextLine();
-			scan = new Scanner(System.in); 
-			
+			scan = new Scanner(System.in);
+
 			c.addCar(new Car(carID, make, model, year));
 			System.out.println("Thanks for adding a car!\n\n");
 			EmployeeMenu();
@@ -57,32 +57,32 @@ public class EmployeeScreen {
 			break;
 		case 4:
 			System.out.println("For which car would you like to accept offers?");
-			//add the new method here
+			// add the new method here
 			System.out.println("Please choose a car.\n");
 			int acceptedCar = scan.nextInt();
 			int clientID = 1;
-			//add the new method here
-			
+			// add the new method here
+
 			System.out.println("Please choose a client.\n");
 			int clientI = scan.nextInt();
-			//fix these methods
-			
+			// fix these methods
+
 			EmployeeMenu();
 			break;
 		case 5:
 			System.out.println("For which car would you like to reject offers?");
-			//new method here
+			// new method here
 			System.out.println("Please choose a car.\n");
 			int rejectedCar = scan.nextInt();
 			int clientId = 1;
-			//new method here
-			
+			// new method here
+
 			System.out.println("The offer has been rejected.\n");
 			EmployeeMenu();
 			break;
 		case 6:
 			System.out.println("Looking up payments...\n");
-			//new method here
+			// new method here
 
 			EmployeeMenu();
 			break;

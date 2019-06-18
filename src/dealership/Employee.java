@@ -2,15 +2,15 @@ package dealership;
 
 import dealership.inter.EmployeePermissions;
 
-public class Employee implements EmployeePermissions{
-	//fields
+public class Employee implements EmployeePermissions {
+	// fields
 	private int employeeid;
 	private String firstname;
 	private String lastname;
 	private String username = "";
 	private String password = "";
-	
-	//args constructor
+
+	// args constructor
 	public Employee(int employeeid, String firstname, String lastname, String username, String password) {
 		this.employeeid = employeeid;
 		this.firstname = firstname;
@@ -18,38 +18,30 @@ public class Employee implements EmployeePermissions{
 		this.username = username;
 		this.password = password;
 	}
-	
-	//no args constructor
+
+	// no args constructor
 	public Employee() {
 		super();
 	}
 
-
 	@Override
-	public double acceptOffers(Car car, double offer, Client client) {
-		//new method here
-		System.out.println("The offer has been accepted");
-		return offer;
+	public void acceptOffers(int i, int j) {
+
 	}
 
 	@Override
-	public double rejectOffers(Car car, double offer, Client client) {
-		//new method here
-		return offer;
+	public void rejectOffers(int i, int j) {
+
 	}
 
 	@Override
 	public void viewAllPayments() {
-		//new method here
-		int i = 0;
-			System.out.println("You currently have no payments.");
-		
+
 	}
-	
+
 	@Override
 	public void viewAllCustomers() {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 //Getters and setters

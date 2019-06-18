@@ -6,7 +6,7 @@ import dealership.DAO.CarDAO;
 import dealership.DAO.ClientDAO;
 
 public class ClientScreen {
-	
+
 	Client client;
 	public static CarDAO c = new CarDAO();
 	public static ClientDAO cd = new ClientDAO();
@@ -43,7 +43,7 @@ public class ClientScreen {
 			System.out.println("How much would you like to bid?\n");
 			double b = scan.nextDouble();
 			cd.makeOffer(b, b, b);
-			//TODO 
+			// TODO
 			ClientMenu();
 			break;
 		case 3:
@@ -55,7 +55,7 @@ public class ClientScreen {
 			break;
 		case 4:
 			System.out.println("Checking for car payments...");
-			//client.viewCarPayments();
+			// client.viewCarPayments();
 			ClientMenu();
 			break;
 		case 5:

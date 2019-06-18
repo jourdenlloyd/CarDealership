@@ -1,26 +1,22 @@
 package dealership;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 import dealership.inter.ClientPermissions;
 
 public class Client implements ClientPermissions {
-	//no args constructor
+	
+	// no args constructor
 	public Client() {
 		super();
 	}
-	
-	//fields
+
+	// fields
 	private int clientid;
 	private String firstname;
 	private String lastname;
 	private String username = "";
 	private String password = "";
-	
-	//args constructor
+
+	// args constructor
 	public Client(int clientid, String firstname, String lastname, String username, String password) {
 		super();
 		this.clientid = clientid;
@@ -30,7 +26,7 @@ public class Client implements ClientPermissions {
 		this.password = password;
 	}
 
-	//getters and setters
+	// getters and setters
 	public String getUsername() {
 		return username;
 	}
@@ -71,24 +67,20 @@ public class Client implements ClientPermissions {
 		this.password = password;
 	}
 
-	
-	//abstract methods
+	// abstract methods
 	@Override
 	public void viewOwnedCars(int i) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void viewCarPayments(int i) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override
 	public void makeOffer(double i, double j, double pr) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 
 }
