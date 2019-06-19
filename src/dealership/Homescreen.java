@@ -1,7 +1,6 @@
 package dealership;
 
 import java.util.Scanner;
-
 import dealership.DAO.ClientDAO;
 import dealership.DAO.EmployeeDAO;
 import dealership.DAO.LoggingUtil;
@@ -12,7 +11,6 @@ public class Homescreen {
 
 	public Homescreen() {
 		LoggingUtil.trace();
-
 		System.out.println("___ Welcome to Lloyd's 3D Cars! ___\n");
 		System.out.println("1. " + "Please login to continue. ");
 		System.out.println("2. " + "Need to sign up? ");
@@ -104,10 +102,10 @@ public class Homescreen {
 				}
 			}		
 			case 3:
-				System.out.println("Exiting...");
+				System.out.println("Exiting...\n\n\n\n\n\n");
 				System.out.println("You have exited the program...\n\n\n");
-				System.exit(0);
 				LoggingUtil.trace();
+				System.exit(0);
 				break;
 			default:
 				System.out.println("Please enter 1-3.");

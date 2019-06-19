@@ -82,19 +82,21 @@ public class ClientDAO implements ClientPermissions {
 	@Override
 	public void viewOwnedCars(int i) {
 //TODO figure out how to realign this
-		String sql = "SELECT carid, make, model, \"year\" FROM \"Project 0\".car where clientid =" + i;
+		String sql = "SELECT carid, make, model, \"year\" FROM \"Project 0\".car where clientid = " + i;
 		PreparedStatement st;
 
 		try {
 			st = conn.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();
 			
-			if (rs.next() == false) {
-				System.out.println("You have no cars.\n");
-			}
-			while (rs.next()); 
+//			if (rs.next() == false) {
+//				System.out.println("You have no cars.\n");
+//			}
+			while (rs.next()) {
+				System.out.println("CarID\t" + "Make\t" + "Model\t" + "Year");
 				System.out.println(rs.getInt(1) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t" + rs.getString(4));
 					  
+			} 
 		} catch (SQLException e) {
 			LoggingUtil.info("SQL exception in viewOwnedCars method.");
 			e.printStackTrace();
@@ -115,8 +117,8 @@ public class ClientDAO implements ClientPermissions {
 				System.out.println("You have no payments.\n");
 			}
 			
-			System.out.println("Car" + "\t" + "\t" + "Offer" + "\t" + "Payment");
 			while (rs.next()) {
+				System.out.println("Car" + "\t" + "\t" + "Offer" + "\t" + "Payment");
 				System.out
 						.println(rs.getString(1) + "\t" + rs.getString(2) + "\t" + rs.getInt(3) + "\t" + rs.getInt(4));
 			}

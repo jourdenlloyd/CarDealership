@@ -70,7 +70,7 @@ public class EmployeeDAO implements EmployeePermissions {
 		try {
 			stmt1 = conn.createStatement();
 			ResultSet rs = stmt1.executeQuery(sql1);
-			System.out.println("ClientId\t" + "CarId\t" + "Offer\t" + "Payment\t" + "Status\t" + "Offer Time");
+			System.out.println("ClId\t" + "CarId\t" + "Offer\t" + "Payment\t" + "Status\t" + "Offer Time");
 			while (rs.next()) {
 				System.out.println(rs.getInt(1) + "\t" + rs.getInt(2) + "\t" + rs.getInt(3) + "\t" + rs.getInt(4) + "\t" + rs.getString(5) + "\t" + rs.getString(6));
 				
@@ -84,34 +84,38 @@ public class EmployeeDAO implements EmployeePermissions {
 	
 	@Override
 	public void acceptOffers(int i, int j) {
-		String sql = "{call update_status(in ?, in ?)}";
+	//Cannot get this to work so I am commenting it out in favor of an earlier statement, which starts a series of actions automated by this method and works similar to a more complicated stored procedure which might be able the MERGE keyword
+		//String sql = "{call update_status(in ?, in ?)}";
+		
+		String sql = "update \"Project 0\".payments set status = 'Accepted' where carid = ? and clientid = ?;";
+		PreparedStatement stmt;
 		
 		String sql2 = "update \"Project 0\".payments set payment = (offer/12) where status = 'Accepted';";
 		PreparedStatement stmt2;
 				
-		//TODO possibly add the stored procedure here so that we can reject offers for the same car when one is accepted
 		String sql3 = "update \"Project 0\".payments set status = 'Rejected' where carid = ? and not clientid = ?;";
 		PreparedStatement stmt3;
 		
 		try {
+			/*
+			 * CallableStatement call = conn.prepareCall(sql); call.setInt(1, i);
+			 * call.setInt(2, j); int numberOfRows = call.executeUpdate();
+			 * if(numberOfRows < 1) { conn.rollback();
+			 * LoggingUtil.error("Not enough rows affected."); }
+			 */
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, i); stmt.setInt(2, j);
+			stmt.executeUpdate();
+			System.out.println("The offer has been accepted!\n");
 			
-			CallableStatement call = conn.prepareCall(sql);
-			call.setInt(1, i);
-			call.setInt(2, j);
-			int numberOfRows = call.executeUpdate();
-			
-			if(numberOfRows < 1) {
-				conn.rollback();
-				LoggingUtil.error("Not enough rows affected.");
-			}
 			stmt2 = conn.prepareStatement(sql2);
 			stmt2.executeUpdate();
+			System.out.println("The monthly payment has been updated!\n");
 			
-			
-			  stmt3 = conn.prepareStatement(sql3);   
-			  stmt3.setInt(1, i); stmt3.setInt(2, j);
-			  stmt3.executeUpdate();
-			 
+			stmt3 = conn.prepareStatement(sql3);   
+			stmt3.setInt(1, i); stmt3.setInt(2, j);
+			stmt3.executeUpdate();
+			System.out.println("The other offers on the car have been rejected!\n");
 			
 		} catch (SQLException e) {
 			LoggingUtil.info();
@@ -143,7 +147,7 @@ public class EmployeeDAO implements EmployeePermissions {
 		try {
 			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			System.out.println("ClientId\t" + "CarId\t" + "Offer\t" + "Payment\t" + "Status");
+			System.out.println("ClId\t" + "CarId\t" + "Offer\t" + "Payment\t" + "Status");
 			while (rs.next()) {
 				System.out.println(rs.getInt(1) + "\t" + rs.getInt(2) + "\t" + rs.getInt(3) + "\t" + rs.getInt(4) + "\t" + rs.getString(5));
 			}
@@ -162,11 +166,11 @@ public class EmployeeDAO implements EmployeePermissions {
 		try {
 			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			System.out.println("______Current Clients______");
-			System.out.println("Clientid\t" + "first name\t" + "last name\t" + "username");
+			System.out.println("____________________Current Clients____________________");
+			System.out.println("ClId\t" + "First Name\t\t" + "Last Name\t\t" + "Username");
 			while (rs.next()) {
 				System.out.println(
-						rs.getInt(1) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t" + rs.getString(4));
+						rs.getInt(1) + "\t" + rs.getString(2) + "\t\t" + rs.getString(3) + "\t\t" + rs.getString(4));
 			}
 
 		} catch (SQLException ex) {

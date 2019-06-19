@@ -457,3 +457,5 @@
 2019-06-19 01:00:55 INFO  root:18 - SQL exception in viewOwnedCars method.
 2019-06-19 01:03:48 INFO  root:18 - SQL exception in viewOwnedCars method.
 2019-06-19 01:08:53 INFO  root:18 - SQL exception in viewOwnedCars method.
+2019-06-19 02:19:28 INFO  root:18 - SQL exception in addEmployee method.
+2019-06-19 02:32:44 INFO  root:18 - SQL exception in viewOwnedCars method.
