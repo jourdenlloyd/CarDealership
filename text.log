@@ -450,3 +450,4 @@
   Position: 15
 2019-06-18 16:57:27 ERROR root:26 - ERROR: relation "payments" does not exist
   Position: 8
+2019-06-18 22:21:36 INFO  root:18 - SQL exception in makeOffer method.

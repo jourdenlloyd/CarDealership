@@ -69,12 +69,11 @@ public class EmployeeScreen {
 				break;
 			case 4:
 				System.out.println("For which car would you like to accept offers?\n");
-				System.out.println("____ Current Cars on the Lot ____" );
-				c.getAllCars();
+				System.out.println("____ Current Cars with Offers ____" );
+				e.viewCarsWithOffers();
 				System.out.println("Please choose a car.\n");
 				int acceptedCar = scan.nextInt();
 				System.out.println("____ Current Client List ____" );
-				e.viewAllCustomers();
 				System.out.println("Please choose a client.\n");
 				scan = new Scanner(System.in);
 				int clientID = scan.nextInt();

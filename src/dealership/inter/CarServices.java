@@ -10,6 +10,6 @@ public void addCar(Car c);
     
     public void getAllCars();
     
-    public void updateCar(int i);
+    public void updateCar(int i, int j);
     
 }

@@ -34,16 +34,32 @@ class DealershipTest {
 	}
 
 	@Test
+    public void testGetAllCars() {
+        
+        assertEquals(true, d.getAllCars());  
+    }
+	
+	@Test
     public void testIsEmployee() {
         
-        assertEquals(true, d.ifIsAnEmp(1));
-        
+        assertEquals(true, d.ifIsAnEmp(1));  
     }
     @Test
     public void testIsAccepted() {
 
-        assertEquals(true, d.acceptTestOffer(1));
-        
+        assertEquals(true, d.acceptTestOffer(1));  
     }
+    @Test
+    public void testIsEmployeelogin() {
+        
+        assertEquals(true, d.employeeLogin("jourden@revcars.com"));
+    }
+    
+    @Test
+    public void testIsClientlogin() {
+        
+        assertEquals(true, d.clientLogin("testclient@gmail.com"));    
+    }
+    
 
 }

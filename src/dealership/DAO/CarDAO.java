@@ -64,7 +64,7 @@ public class CarDAO implements CarServices {
 
 			while (rs.next()) {
 				System.out.println(
-						rs.getInt(1) + " " + rs.getString(2) + "\t" + rs.getString(3) + "\t" + rs.getInt(4));
+						rs.getInt(1) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t" + rs.getInt(4));
 			}
 
 		} catch (SQLException e) {
@@ -74,8 +74,8 @@ public class CarDAO implements CarServices {
 
 	}
 
-	@Override
-	public void updateCar(int i) {
+	public void updateCar(int i, int j) {
+		String sql = "UPDATE \"Project 0\".payments SET approverid = ? WHERE carid = ?;" ;
 
 	}
 

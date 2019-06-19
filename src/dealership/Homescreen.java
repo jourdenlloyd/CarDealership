@@ -111,7 +111,8 @@ public class Homescreen {
 				break;
 			default:
 				System.out.println("Please enter 1-3.");
-				checker = true;
+				checker = false;
+				Homescreen homescreen = new Homescreen();
 				break;
 			}
 		}

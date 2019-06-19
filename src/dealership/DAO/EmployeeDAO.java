@@ -63,30 +63,53 @@ public class EmployeeDAO implements EmployeePermissions {
 		}
 	}
 
+	public void viewCarsWithOffers() {
+		String sql1 = "SELECT clientid, carid, offer, payment, status, offer_time FROM \"Project 0\".payments;";
+		Statement stmt1;
+		
+		try {
+			stmt1 = conn.createStatement();
+			ResultSet rs = stmt1.executeQuery(sql1);
+			System.out.println(rs.getInt(1) + "\t" + rs.getInt(2) + "\t" + rs.getInt(3) + "\t" + rs.getInt(4) + "\t" + rs.getInt(5));
+			
+		} catch (SQLException e) {
+			LoggingUtil.info();
+			e.printStackTrace();
+		}
+		
+	}
+	
 	@Override
 	public void acceptOffers(int i, int j) {
 		//does this count as a stored procedure since it does two statements?
+		String sql = "{call update_status(?, ?)}";
 		
-		String sql = "update \"Project 0\".payments set status = 'Accepted' where carid = ? and clientid = ?;";
-		PreparedStatement stmt;
 		String sql2 = "update \"Project 0\".payments set payment = (offer/12) where status = 'Accepted';";
 		PreparedStatement stmt2;
 				
 		//TODO possibly add the stored procedure here so that we can reject offers for the same car when one is accepted
-		// String sql3 = "update \"Project 0\".payments set status = 'Rejected' where carid = ? and not clientid = ?;"
+		String sql3 = "update \"Project 0\".payments set status = 'Rejected' where carid = ? and not clientid = ?;";
+		PreparedStatement stmt3;
 		
 		try {
-			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, i);
-			stmt.setInt(2, j);
-			stmt.executeUpdate();
+			
+			CallableStatement call = conn.prepareCall(sql);
+			call.setInt(1, i);
+			call.setInt(2, j);
+			int numberOfRows = call.executeUpdate();
+			
+			if(numberOfRows > 1) {
+				conn.rollback();
+				LoggingUtil.error("Too many rows affected.");
+			}
 			stmt2 = conn.prepareStatement(sql2);
 			stmt2.executeUpdate();
 			
-			/*
-			 * stmt3 = conn.prepareStatement(sql3);   stmt.setInt(1, i); stmt.setInt(2, j);
-			 * stmt.executeUpdate();
-			 */
+			
+			  stmt3 = conn.prepareStatement(sql3);   
+			  stmt3.setInt(1, i); stmt3.setInt(2, j);
+			  stmt3.executeUpdate();
+			 
 			
 		} catch (SQLException e) {
 			LoggingUtil.info();
