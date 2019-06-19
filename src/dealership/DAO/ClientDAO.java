@@ -12,9 +12,9 @@ import dealership.util.ConnectionFactory;
 
 public class ClientDAO implements ClientPermissions {
 	public static Connection conn = ConnectionFactory.getConnection();
-	
-public void clientLogin(String us) {
-		
+
+	public void clientLogin(String us) {
+
 		String sql = "SELECT username FROM \"Project 0\".client where username = " + "'" + us + "'";
 		Statement stmt;
 
@@ -25,12 +25,12 @@ public void clientLogin(String us) {
 			while (rs.next()) {
 				System.out.println("You have logged in!\n");
 			}
-			
+
 		} catch (SQLException e1) {
 			LoggingUtil.warn("The username or password is not valid.\n");
 			e1.printStackTrace();
 		}
-		
+
 	}
 
 	public void addClient(Client c) {
@@ -81,39 +81,40 @@ public void clientLogin(String us) {
 
 	@Override
 	public void viewOwnedCars(int i) {
-
+//TODO figure out how to realign this
 		String sql = "SELECT carid, make, model, \"year\" FROM \"Project 0\".car where clientid =" + i;
-		Statement st;
+		PreparedStatement st;
 
 		try {
-			st = conn.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-
+			st = conn.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();
+			
 			if (rs.next() == false) {
 				System.out.println("You have no cars.\n");
-			} else
-				do {
-				} while (rs.next());
-			{
-				System.out.println(
-						rs.getInt(1) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t" + rs.getString(4));
 			}
+			while (rs.next()); 
+				System.out.println(rs.getInt(1) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t" + rs.getString(4));
+					  
 		} catch (SQLException e) {
 			LoggingUtil.info("SQL exception in viewOwnedCars method.");
 			e.printStackTrace();
+			}
 		}
-
-	}
 
 	@Override
 	public void viewCarPayments(int i) {
 		PreparedStatement stmt;
-		String sql = "select car.make, car.model, payments.offer, payments.payment from \"Project 0\".car inner join \"Project 0\".payments on car.clientid ="	+ i;
+		String sql = "select car.make, car.model, payments.offer, payments.payment from \"Project 0\".car inner join \"Project 0\".payments on car.clientid ="
+				+ i;
 
 		try {
 			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 
+			if (rs.next() == false) {
+				System.out.println("You have no payments.\n");
+			}
+			
 			System.out.println("Car" + "\t" + "\t" + "Offer" + "\t" + "Payment");
 			while (rs.next()) {
 				System.out

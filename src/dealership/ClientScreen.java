@@ -36,21 +36,22 @@ public class ClientScreen {
 			case 1:
 				System.out.println("____ Current Cars on the Lot ____" );
 				c.getAllCars();
+				System.out.println("\n\n");
 				ClientMenu();
 				break;
 			case 2:
 				System.out.println("Which car would you like to buy?\n");
 				c.getAllCars();
-				System.out.println("Please enter your clientID number.");
+				System.out.println("Please enter your clientID number.\n");
 				scan = new Scanner(System.in);
 				double a = scan.nextInt();
-				System.out.println("Please enter the desired carID number.");
+				System.out.println("Please enter the desired carID number.\n");
 				scan = new Scanner(System.in);
 				double b = scan.nextDouble();
 				System.out.println("How much would you like to bid?\n");
 				double c = scan.nextDouble();
 				cd.makeOffer(a, b, c);
-
+				System.out.println("\n\n");
 				ClientMenu();
 				break;
 			case 3:
@@ -58,6 +59,7 @@ public class ClientScreen {
 				int i = scan.nextInt();
 				System.out.println("Checking for owned cars...\n");
 				cd.viewOwnedCars(i);
+				System.out.println("\n\n");
 				ClientMenu();
 				break;
 			case 4:
@@ -65,6 +67,7 @@ public class ClientScreen {
 				int j = scan.nextInt();
 				System.out.println("Checking for car payments...");
 				cd.viewCarPayments(j);
+				System.out.println("\n\n");
 				ClientMenu();
 				break;
 			case 5:
@@ -78,6 +81,6 @@ public class ClientScreen {
 				checker = true;
 				break;
 			}
-		}
+		} System.out.println("\n");
 	}
 }

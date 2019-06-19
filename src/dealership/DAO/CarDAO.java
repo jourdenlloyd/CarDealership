@@ -38,12 +38,14 @@ public class CarDAO implements CarServices {
 
 	@Override
 	public void removeCar(int i) {
-		String sql = "DELETE FROM \"Project 0\".car WHERE carid =" + i;
-		Statement stmt;
+		String sql = "DELETE FROM \"Project 0\".car WHERE carid = " + "'" + i + "';";
+		PreparedStatement stmt;
 
 		try {
-			stmt = conn.createStatement();
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, i);
 			ResultSet rs = stmt.executeQuery(sql);
+			
 			System.out.println("The car has been removed.\n");
 			
 		} catch (SQLException e) {

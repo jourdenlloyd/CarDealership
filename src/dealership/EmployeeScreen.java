@@ -73,7 +73,7 @@ public class EmployeeScreen {
 				e.viewCarsWithOffers();
 				System.out.println("Please choose a car.\n");
 				int acceptedCar = scan.nextInt();
-				System.out.println("____ Current Client List ____" );
+				
 				System.out.println("Please choose a client.\n");
 				scan = new Scanner(System.in);
 				int clientID = scan.nextInt();
@@ -83,9 +83,12 @@ public class EmployeeScreen {
 				break;
 			case 5:
 				System.out.println("For which car would you like to reject offers?");
+				e.viewCarsWithOffers();
+				System.out.println("Please choose a car.\n");
 				int rejectedCar = scan.nextInt();
 				scan = new Scanner(System.in);
-				System.out.println("Please choose a car.\n");
+				
+				System.out.println("Please choose a client.\n");
 				int clientId = scan.nextInt();
 				e.rejectOffers(rejectedCar, clientId);
 

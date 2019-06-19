@@ -70,19 +70,21 @@ public class EmployeeDAO implements EmployeePermissions {
 		try {
 			stmt1 = conn.createStatement();
 			ResultSet rs = stmt1.executeQuery(sql1);
-			System.out.println(rs.getInt(1) + "\t" + rs.getInt(2) + "\t" + rs.getInt(3) + "\t" + rs.getInt(4) + "\t" + rs.getInt(5));
-			
-		} catch (SQLException e) {
+			System.out.println("ClientId\t" + "CarId\t" + "Offer\t" + "Payment\t" + "Status\t" + "Offer Time");
+			while (rs.next()) {
+				System.out.println(rs.getInt(1) + "\t" + rs.getInt(2) + "\t" + rs.getInt(3) + "\t" + rs.getInt(4) + "\t" + rs.getString(5) + "\t" + rs.getString(6));
+				
+			} 
+		}catch (SQLException e) {
 			LoggingUtil.info();
 			e.printStackTrace();
 		}
-		
+	
 	}
 	
 	@Override
 	public void acceptOffers(int i, int j) {
-		//does this count as a stored procedure since it does two statements?
-		String sql = "{call update_status(?, ?)}";
+		String sql = "{call update_status(in ?, in ?)}";
 		
 		String sql2 = "update \"Project 0\".payments set payment = (offer/12) where status = 'Accepted';";
 		PreparedStatement stmt2;
@@ -98,9 +100,9 @@ public class EmployeeDAO implements EmployeePermissions {
 			call.setInt(2, j);
 			int numberOfRows = call.executeUpdate();
 			
-			if(numberOfRows > 1) {
+			if(numberOfRows < 1) {
 				conn.rollback();
-				LoggingUtil.error("Too many rows affected.");
+				LoggingUtil.error("Not enough rows affected.");
 			}
 			stmt2 = conn.prepareStatement(sql2);
 			stmt2.executeUpdate();
@@ -135,15 +137,15 @@ public class EmployeeDAO implements EmployeePermissions {
 
 	@Override
 	public void viewAllPayments() {
-		String sql = "SELECT clientid, carid, offer, payment, approverid, status FROM \"Project 0\".payments;";
+		String sql = "SELECT clientid, carid, offer, payment, status FROM \"Project 0\".payments;";
 		PreparedStatement stmt;
 
 		try {
 			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
+			System.out.println("ClientId\t" + "CarId\t" + "Offer\t" + "Payment\t" + "Status");
 			while (rs.next()) {
-				System.out.println(rs.getInt(1) + "\t" + rs.getInt(2) + "\t" + rs.getInt(3) + "\t" + rs.getInt(4) + "\t"
-						+ rs.getInt(5) + "\t" + rs.getString(6));
+				System.out.println(rs.getInt(1) + "\t" + rs.getInt(2) + "\t" + rs.getInt(3) + "\t" + rs.getInt(4) + "\t" + rs.getString(5));
 			}
 
 		} catch (SQLException ex) {
@@ -160,6 +162,8 @@ public class EmployeeDAO implements EmployeePermissions {
 		try {
 			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
+			System.out.println("______Current Clients______");
+			System.out.println("Clientid\t" + "first name\t" + "last name\t" + "username");
 			while (rs.next()) {
 				System.out.println(
 						rs.getInt(1) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t" + rs.getString(4));
